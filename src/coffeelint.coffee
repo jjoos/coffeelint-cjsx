@@ -226,7 +226,7 @@ coffeelint.lint = (source, userConfig = {}, literate = false) ->
 
     # Do cjsx transform when configured
     if userConfig['cjsx']?['transform']? == true
-      source = CoffeeReactTransform(source)
+        source = CoffeeReactTransform(source)
 
     # Do AST linting first so all compile errors are caught.
     astErrors = new ASTLinter(source, config, _rules, CoffeeScript).lint()
