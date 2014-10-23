@@ -32,7 +32,7 @@ class ASTApi
 # syntax tree.
 module.exports = class ASTLinter extends BaseLinter
 
-    constructor : (source, config, rules, @CoffeeScript, @ReactTransform) ->
+    constructor : (source, config, rules, @CoffeeScript) ->
         super source, config, rules
         @astApi = new ASTApi @config
 
@@ -44,7 +44,6 @@ module.exports = class ASTLinter extends BaseLinter
     lint : () ->
         errors = []
         try
-            @source = @ReactTransform(@source)
             @node = @CoffeeScript.nodes(@source)
         catch coffeeError
             # If for some reason you shut off the 'coffeescript_error' rule err
